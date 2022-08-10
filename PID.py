@@ -50,7 +50,8 @@ class PIDCon:
         self.maxI = MaxI
         self.lowI = LowI
 
-        
+    def resetPID(self):
+        self.Integral = 0
 
     '''PID Functions'''
     def derivative(self, dt, error, prevError):
@@ -58,14 +59,17 @@ class PIDCon:
         
     def integral(self, error, dt):
 
-        self.Integral = (self.Integral + error*dt)*self.Igain
+        #prevent a glitch in the matrix
+        if self.Igain == 0:
+            return self.Integral
 
+        self.Integral = (self.Integral + error*dt)*self.Igain
         if(self.Integral >= self.maxI):
-            self.Integral = 1.0
-            return 1
+            self.Integral = self.maxI
+            return self.Integral
         elif(self.Integral <= self.lowI):
-            self.Integral = -1.0
-            return -1.0
+            self.Integral = self.lowI
+            return self.Integral
         else:
             return self.Integral
 
