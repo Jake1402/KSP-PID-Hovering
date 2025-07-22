@@ -16,5 +16,5 @@ Future plans for this project include a few things. For one I plan to incorporat
 - Current PID values
 - Engage and disable selected PID options (vertical, horizontal, attitude)
 - Displaying current vehicle states (fuel, coordinates, etc)
-Using a GUI i'd also like to allow user to have the ability to change PID values and target values in flight through this GUI.
 
+<br>Using a GUI i'd also like to allow user to have the ability to change PID values and target values in flight through this GUI.
